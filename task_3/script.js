@@ -7,8 +7,6 @@ const buttonGeo = document.querySelector('.button-geo');
 const input = document.querySelector('input');
 const chat = document.querySelector('.chat-window');
 
-
-
 let websocket;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -51,9 +49,6 @@ document.addEventListener('DOMContentLoaded', function () {
       navigator.geolocation.getCurrentPosition(result, error);
     }
 
-    writeGeo();
-    websocket.send(link);
-
     function writeGeo() {
       link.style.wordWrap = 'break-word';
       link.style.color = 'purple';
@@ -67,12 +62,9 @@ document.addEventListener('DOMContentLoaded', function () {
       let latitude = position.coords.latitude;
       let longitude = position.coords.longitude;
 
-      link.textContent = `Широта: ${latitude} °, Долгота: ${longitude} °  Посмотреть на карте`;
+      link.textContent = `Геолокация`;
       link.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
+      writeGeo();
     }
   })
 });
-
-
-
-
